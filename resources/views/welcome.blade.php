@@ -20,7 +20,7 @@
     </head>
     <body class="antialiased">
         
-
+        <livewire:counter />
 
         <livewire:scripts />
     </body>
