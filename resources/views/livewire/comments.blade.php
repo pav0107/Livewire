@@ -32,7 +32,7 @@
         </div>
         @endforeach
 
-        {{ $comments->links() }}
+        {{ $comments->links('pagination-links') }}
         
     </div>
 </div> 
