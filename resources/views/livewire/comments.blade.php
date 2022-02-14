@@ -16,7 +16,7 @@
                     <p class="text-lg font-bold">{{ $comment->creator->name }}</p>
                     <p class="py-1 mx-3 text-xs font-semibold text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
                 </div>
-                <i class="text-red-200 cursor-pointer fas fa-times hover:text-red-600"></i>
+                <i class="text-red-200 cursor-pointer fas fa-times hover:text-red-600" wire:click="remove({{ $comment->id }})"></i>
             </div>
 
             <p class="text-gray-800">{{ $comment->body }}</p>
