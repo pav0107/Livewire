@@ -2,6 +2,15 @@
     <div class="w-6/12">
         <h1 class="my-10 text-3xl">Comments</h1>
         @error('newComment') <span class="text-xs text-red-500">{{  $message }}</span> @enderror
+
+        <div>
+            @if (session()->has('message'))
+                <div class="p-3 text-green-800 bg-green-300 rounded shadow-sm">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
+        
         <div class="flex my-4">
             <input type="text" class="w-full p-2 my-2 mr-2 border rounded shadow" placeholder="What's on your mind?" wire:model.debounce.500ms="newComment">
             <div class="py-2">
