@@ -1,20 +1,22 @@
 <div class="flex justify-center">
     <div class="w-6/12">
         <h1 class="my-10 text-3xl">Comments</h1>
-        <form class="my-4 flex"  wire:submit.prevent="addComment">
-            <input type="text" class="w-full rounded border shadow p-2 mr-2 my-2" placeholder="What's on your mind?" wire:model.lazy="newComment">
+        <div class="flex my-4">
+            <input type="text" class="w-full p-2 my-2 mr-2 border rounded shadow" placeholder="What's on your mind?" wire:model="newComment">
             <div class="py-2">
-                <button type="submit" class="p-2 bg-blue-500 w-20 rounded shadow text-white">Add</button>
+                <button class="w-20 p-2 text-white bg-blue-500 rounded shadow" wire:click="addComment">Add</button>
             </div>
-        </form>
+        </div>
+
         @foreach($comments as $comment)
-        <div class="rounded border shadow p-3 my-2">
+        <div class="p-3 my-2 border rounded shadow">
             <div class="flex justify-start my-2">
-                <p class="font-bold text-lg">{{$comment['creator']}}</p>
-                <p class="mx-3 py-1 text-xs text-gray-500 font-semibold">{{$comment['created_at']}}</p>
+                <p class="text-lg font-bold">{{ $comment->creator->name }}</p>
+                <p class="py-1 mx-3 text-xs font-semibold text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
             </div>
-            <p class="text-gray-800">{{$comment['body']}}</p>
+            <p class="text-gray-800">{{ $comment->body }}</p>
         </div>
         @endforeach
+        
     </div>
 </div> 

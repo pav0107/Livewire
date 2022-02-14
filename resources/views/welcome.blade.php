@@ -9,7 +9,6 @@
     <livewire:styles />
 </head>
 <body>
-
     <livewire:comments />
     <livewire:scripts />
 </body>
