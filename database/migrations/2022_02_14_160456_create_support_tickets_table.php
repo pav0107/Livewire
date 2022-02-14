@@ -12,12 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('support_tickets', function (Blueprint $table) {
             $table->id();
-            $table->text('body');
-            $table->string('image')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('support_ticket_id');
+            $table->string('question');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('support_tickets');
     }
 };
