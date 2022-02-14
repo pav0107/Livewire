@@ -45,8 +45,10 @@ class Comments extends Component
     {
         $comment = Comment::find($commentId);
 
+        // delete from database
         $comment->delete();
 
+        // update collection we have
         // $this->comments = $this->comments->where('id', '!=', $commentId);
         // same as the one below
         $this->comments = $this->comments->except($commentId);
