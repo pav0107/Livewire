@@ -18,9 +18,16 @@ class Comments extends Component
         $this->comments = $initialComments;
     }
 
+    public function updated($field)
+    {
+        $this->validateOnly($field, ['newComment' => 'required|max:255']);
+    }
+
 
     public function addComment()
     {
+        $this->validate(['newComment' => 'required|max:255']);
+
         if ($this->newComment == '') {
             return;
         }
