@@ -2,7 +2,7 @@
     <div class="w-6/12">
         <h1 class="my-10 text-3xl">Comments</h1>
         <div class="flex my-4">
-            <input type="text" class="w-full p-2 my-2 mr-2 border rounded shadow" placeholder="What's on your mind?" wire:model="newComment">
+            <input type="text" class="w-full p-2 my-2 mr-2 border rounded shadow" placeholder="What's on your mind?" wire:model.debounce.500ms="newComment">
             <div class="py-2">
                 <button class="w-20 p-2 text-white bg-blue-500 rounded shadow" wire:click="addComment">Add</button>
             </div>

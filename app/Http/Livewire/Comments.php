@@ -8,32 +8,29 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    // public $comments = [
-    //     [
-    //         'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ex cupiditate quo commodi aspernatur delectus veniam necessitatibus.',
-    //         'created_at' => '3 min ago',
-    //         'creator' => 'Pav'
-    //     ]
-    // ];
     public $comments;
 
     public $newComment;
 
     public function mount()
     {
-        $initialComments = Comment::all();
-        // dd($initialComments);
+        $initialComments = Comment::latest()->get();
         $this->comments = $initialComments;
     }
 
 
     public function addComment()
     {
-        array_unshift($this->comments, [
-            'body' => $this->newComment,
-            'created_at' => Carbon::now()->diffForHumans(),
-            'creator' => 'Pav Rao'
+        if ($this->newComment == '') {
+            return;
+        }
+
+        $createdComment = Comment::create([
+            'body' => $this->newComment, 'user_id' => 1
         ]);
+
+        $this->comments->prepend($createdComment);
+
         $this->newComment = "";
     }
 
